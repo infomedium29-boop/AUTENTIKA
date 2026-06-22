@@ -1,42 +1,35 @@
-const header = document.querySelector('[data-header]');
+const body = document.body;
 const menuToggle = document.querySelector('[data-menu-toggle]');
-const navLinks = document.querySelector('[data-nav-links]');
-const year = document.querySelector('[data-year]');
+const mobilePanel = document.querySelector('[data-mobile-panel]');
 
-if (year) year.textContent = new Date().getFullYear();
-
-const onScroll = () => {
-  if (!header) return;
-  header.classList.toggle('is-scrolled', window.scrollY > 20);
-};
-
-onScroll();
-window.addEventListener('scroll', onScroll, { passive: true });
-
-if (menuToggle && navLinks) {
+if (menuToggle && mobilePanel) {
   menuToggle.addEventListener('click', () => {
-    const isOpen = menuToggle.classList.toggle('is-open');
-    navLinks.classList.toggle('is-open', isOpen);
-    document.body.classList.toggle('no-scroll', isOpen);
+    const isOpen = body.classList.toggle('nav-open');
     menuToggle.setAttribute('aria-expanded', String(isOpen));
   });
 
-  navLinks.querySelectorAll('a').forEach((link) => {
+  mobilePanel.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
-      menuToggle.classList.remove('is-open');
-      navLinks.classList.remove('is-open');
-      document.body.classList.remove('no-scroll');
+      body.classList.remove('nav-open');
       menuToggle.setAttribute('aria-expanded', 'false');
     });
   });
 }
+
+const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+document.querySelectorAll('[data-nav-link]').forEach((link) => {
+  const href = link.getAttribute('href');
+  if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+    link.classList.add('active');
+  }
+});
 
 const revealItems = document.querySelectorAll('.reveal');
 if ('IntersectionObserver' in window) {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
+        entry.target.classList.add('in-view');
         observer.unobserve(entry.target);
       }
     });
@@ -44,38 +37,29 @@ if ('IntersectionObserver' in window) {
 
   revealItems.forEach((item) => observer.observe(item));
 } else {
-  revealItems.forEach((item) => item.classList.add('is-visible'));
+  revealItems.forEach((item) => item.classList.add('in-view'));
 }
 
-const faqButtons = document.querySelectorAll('[data-faq-question]');
-faqButtons.forEach((button) => {
+document.querySelectorAll('[data-faq-item]').forEach((item) => {
+  const button = item.querySelector('[data-faq-question]');
+  const answer = item.querySelector('[data-faq-answer]');
+  if (!button || !answer) return;
+
   button.addEventListener('click', () => {
-    const item = button.closest('.faq-item');
-    const answer = item.querySelector('.faq-answer');
-    const isOpen = item.classList.contains('is-open');
-
-    document.querySelectorAll('.faq-item.is-open').forEach((openItem) => {
-      if (openItem !== item) {
-        openItem.classList.remove('is-open');
-        const openAnswer = openItem.querySelector('.faq-answer');
-        if (openAnswer) openAnswer.style.maxHeight = null;
-      }
-    });
-
-    item.classList.toggle('is-open', !isOpen);
-    answer.style.maxHeight = !isOpen ? `${answer.scrollHeight}px` : null;
+    const isOpen = item.classList.toggle('open');
+    button.setAttribute('aria-expanded', String(isOpen));
+    answer.style.maxHeight = isOpen ? `${answer.scrollHeight}px` : '0px';
   });
 });
 
-const contactForm = document.querySelector('[data-contact-form]');
-if (contactForm) {
-  contactForm.addEventListener('submit', (event) => {
+document.querySelectorAll('[data-demo-form]').forEach((form) => {
+  const message = form.querySelector('[data-success-message]');
+  form.addEventListener('submit', (event) => {
     event.preventDefault();
-    const status = contactForm.querySelector('[data-form-status]');
-    if (status) {
-      status.classList.add('is-visible');
-      status.textContent = 'Hvala na upitu. Ovo je demo forma — za slanje poruka potrebno je povezati Web3Forms, Formspree ili Cloudflare Functions.';
+    if (message) {
+      message.classList.add('show');
+      message.textContent = 'Hvala! Ovo je demo forma. Nakon dodavanja pravog e-maila, upiti će stizati direktno klijentu.';
     }
-    contactForm.reset();
+    form.reset();
   });
-}
+});

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Galerija | Autentika</title>
-  <meta name="description" content="Galerija Autentika — vizualni prostor za radionice, svjesni ples i embodiment atmosferu.">
+  <title>Događaji | Autentika</title>
+  <meta name="description" content="Raspored radionica, susreta i događaja svjesnog plesa u Autentici.">
   <meta name="theme-color" content="#fbf7ef">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,29 +54,47 @@
 
 <section class="page-hero">
   <div class="container">
-    <div class="breadcrumb"><a href="index.html">Početna</a> / Galerija</div>
-    <p class="eyebrow reveal">Galerija</p>
-    <h1 class="page-title reveal delay-1">Galerija atmosfere, pokreta i prostora.</h1>
-    <p class="lead reveal delay-2">Galerija donosi atmosferu pokreta, daha, prisutnosti i prostora koji Autentika njeguje kroz svaki susret.</p>
+    <div class="breadcrumb"><a href="index.html">Početna</a> / Događaji</div>
+    <p class="eyebrow reveal">Događaji</p>
+    <h1 class="page-title reveal delay-1">Nadolazeći susreti i radionice.</h1>
+    <p class="lead reveal delay-2">Event kartice su pripremljene kao demo sadržaj. Kada klijentica pošalje stvarne datume, lokaciju i cijene, lako se zamijene.</p>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
-    <div class="gallery-grid reveal">
-      <div class="gallery-item gallery-1 tall"><div class="gallery-caption">Slobodan pokret</div></div>
-      <div class="gallery-item gallery-2"><div class="gallery-caption">Dah i prisutnost</div></div>
-      <div class="gallery-item gallery-3"><div class="gallery-caption">Radionice</div></div>
-      <div class="gallery-item gallery-4 wide"><div class="gallery-caption">Krug i zajednica</div></div>
-      <div class="gallery-item gallery-5"><div class="gallery-caption">Tišina nakon pokreta</div></div>
-      <div class="gallery-item gallery-6"><div class="gallery-caption">Autentika prostor</div></div>
-    </div>
+    <article class="event-card reveal">
+      <div class="event-date"><b>12</b><span>srp</span></div>
+      <div><h3>Uvod u svjesni ples</h3><p>Demo događaj · 18:30 · Studio / lokacija po dogovoru · Idealno za početnike</p></div>
+      <a class="btn btn-primary" href="kontakt.html">Rezerviraj</a>
+    </article>
+    <article class="event-card reveal delay-1">
+      <div class="event-date"><b>26</b><span>srp</span></div>
+      <div><h3>Plesna meditacija: tijelo kao kompas</h3><p>Demo događaj · 19:00 · 90 minuta · Vođeni susret pokreta, daha i glazbe</p></div>
+      <a class="btn btn-primary" href="kontakt.html">Rezerviraj</a>
+    </article>
+    <article class="event-card reveal delay-2">
+      <div class="event-date"><b>09</b><span>kol</span></div>
+      <div><h3>Tematska radionica: granice i lakoća</h3><p>Demo događaj · 17:00 · 2.5 sata · Radionica za nježan kontakt s vlastitim granicama</p></div>
+      <a class="btn btn-primary" href="kontakt.html">Rezerviraj</a>
+    </article>
   </div>
 </section>
 <section class="section soft-band">
   <div class="container grid two">
-    <div class="quote-card reveal"><p>Fotografije će ovdje pričati atmosferu, ali stranica već sada nosi osjećaj brenda.</p><span>Demo galerija</span></div>
-    <div class="reveal delay-1"><p class="eyebrow">Preporuka</p><h2 class="section-title">Fotografije neka budu prirodne, mekane i nenametljivo luksuzne.</h2><p class="copy">Najbolje bi izgledale fotografije u toplom svjetlu, bez previše poziranja, s detaljima ruku, stopala, prostora, tkanina, glazbe i pokreta.</p></div>
+    <div class="reveal"><p class="eyebrow">Privatni termini</p><h2 class="section-title">Mogući su i individualni susreti po dogovoru.</h2><p class="copy">Za osobe koje žele više privatnosti, blaži tempo ili rad prilagođen trenutnoj potrebi.</p></div>
+    <div class="form-wrap reveal delay-1">
+      <form data-demo-form>
+        <div class="form-grid">
+          <div class="field"><label for="name-event">Ime</label><input id="name-event" required placeholder="Vaše ime"></div>
+          <div class="field"><label for="email-event">E-mail</label><input id="email-event" type="email" required placeholder="vas@email.com"></div>
+          <div class="field full"><label for="message-event">Koji termin vas zanima?</label><textarea id="message-event" placeholder="Napišite naziv događaja ili željeni termin"></textarea></div>
+        </div>
+        <button class="btn btn-primary" type="submit" style="margin-top:18px">Pošalji upit</button>
+        <p class="form-note">Demo forma — potrebno povezati sa stvarnim e-mailom.</p>
+        <div class="success-message" data-success-message></div>
+      </form>
+    </div>
   </div>
 </section>
 
