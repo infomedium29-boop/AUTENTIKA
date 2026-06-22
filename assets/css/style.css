@@ -465,3 +465,71 @@ body.nav-open .hamburger-icon{
   transform:rotate(90deg);
   transition:transform .22s ease;
 }
+
+
+/* FINAL hamburger fix - CSS drawn icon */
+.menu-toggle{
+  width:48px !important;
+  height:48px !important;
+  min-width:48px !important;
+  min-height:48px !important;
+  padding:0 !important;
+  border-radius:999px !important;
+  border:1px solid rgba(29,37,33,.18) !important;
+  background:#fffdf8 !important;
+  color:#1d2521 !important;
+  box-shadow:0 10px 28px rgba(29,37,33,.10) !important;
+  position:relative !important;
+  cursor:pointer !important;
+  -webkit-appearance:none !important;
+  appearance:none !important;
+  outline:none !important;
+}
+.menu-toggle::before,
+.menu-toggle::after{
+  content:"" !important;
+  position:absolute !important;
+  left:13px !important;
+  right:13px !important;
+  height:2.5px !important;
+  background:#1d2521 !important;
+  border-radius:999px !important;
+  opacity:1 !important;
+  display:block !important;
+  visibility:visible !important;
+  transform:none !important;
+}
+.menu-toggle::before{
+  top:15px !important;
+  box-shadow:0 8px 0 #1d2521 !important;
+}
+.menu-toggle::after{
+  top:31px !important;
+}
+.menu-toggle .menu-label,
+.menu-toggle .hamburger-icon,
+.menu-toggle > span{
+  position:absolute !important;
+  width:1px !important;
+  height:1px !important;
+  overflow:hidden !important;
+  clip:rect(0,0,0,0) !important;
+  white-space:nowrap !important;
+}
+body.nav-open .menu-toggle::before{
+  top:23px !important;
+  box-shadow:none !important;
+  transform:rotate(45deg) !important;
+}
+body.nav-open .menu-toggle::after{
+  top:23px !important;
+  transform:rotate(-45deg) !important;
+}
+@media (min-width:1041px){
+  .menu-toggle{display:none !important}
+}
+@media (max-width:1040px){
+  .menu-toggle{
+    display:block !important;
+  }
+}
