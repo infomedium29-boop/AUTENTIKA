@@ -1,0 +1,21 @@
+# Autentika
+
+> Autentika je web stranica za svjesni ples, plesnu meditaciju, slobodni pokret i embodiment praksu.
+
+Ova web stranica predstavlja programe, događaje, kontakt informacije, politiku privatnosti i politiku kolačića za brend Autentika.
+
+## Pages
+
+- [Početna](https://autentika.hr/)
+- [O Autentici](https://autentika.hr/o-autentici.html)
+- [Svjesni ples](https://autentika.hr/svjesni-ples.html)
+- [Programi](https://autentika.hr/programi.html)
+- [Događaji](https://autentika.hr/dogadaji.html)
+- [Galerija](https://autentika.hr/galerija.html)
+- [Kontakt](https://autentika.hr/kontakt.html)
+- [Politika privatnosti](https://autentika.hr/politika-privatnosti.html)
+- [Politika kolačića](https://autentika.hr/politika-kolacica.html)
+
+## Notes
+
+Stranica je statička HTML/CSS/JavaScript web stranica. Kontakt forma je pripremljena za povezivanje sa stvarnim servisom za slanje e-mail upita.
