@@ -438,3 +438,30 @@ body.nav-open .menu-toggle span:nth-child(3){top:23px;transform:rotate(-45deg)}
 @media (max-width:1040px){
   .menu-toggle{display:flex}
 }
+
+
+/* Final mobile hamburger SVG fix */
+.menu-toggle{
+  color:#1d2521 !important;
+  display:none;
+  align-items:center !important;
+  justify-content:center !important;
+  position:relative;
+}
+.hamburger-icon{
+  width:26px;
+  height:26px;
+  display:block;
+  color:#1d2521 !important;
+  stroke:#1d2521 !important;
+  opacity:1 !important;
+  visibility:visible !important;
+  pointer-events:none;
+}
+@media (max-width:1040px){
+  .menu-toggle{display:flex !important}
+}
+body.nav-open .hamburger-icon{
+  transform:rotate(90deg);
+  transition:transform .22s ease;
+}
