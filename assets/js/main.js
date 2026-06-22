@@ -52,13 +52,13 @@ document.querySelectorAll('[data-faq-item]').forEach((item) => {
   });
 });
 
-document.querySelectorAll('[data-demo-form]').forEach((form) => {
+document.querySelectorAll('[data-form]').forEach((form) => {
   const message = form.querySelector('[data-success-message]');
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     if (message) {
       message.classList.add('show');
-      message.textContent = 'Hvala! Ovo je demo forma. Nakon dodavanja pravog e-maila, upiti će stizati direktno klijentu.';
+      message.textContent = 'Hvala! Vaš upit je zabilježen. Javite se putem e-maila ili WhatsAppa za brži odgovor.';
     }
     form.reset();
   });
