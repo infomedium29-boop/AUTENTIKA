@@ -63,3 +63,60 @@ document.querySelectorAll('[data-form]').forEach((form) => {
     form.reset();
   });
 });
+
+
+const cookieBanner = document.querySelector('[data-cookie-banner]');
+const cookieAccept = document.querySelector('[data-cookie-accept]');
+const cookieReject = document.querySelector('[data-cookie-reject]');
+const cookieSave = document.querySelector('[data-cookie-save]');
+const cookieSettings = document.querySelector('[data-cookie-settings]');
+const cookieSettingsPanel = document.querySelector('[data-cookie-settings-panel]');
+const cookieAnalytics = document.querySelector('[data-cookie-analytics]');
+const cookieMarketing = document.querySelector('[data-cookie-marketing]');
+
+const consentKey = 'autentika_cookie_consent';
+
+function saveCookieConsent(consent) {
+  localStorage.setItem(consentKey, JSON.stringify({
+    necessary: true,
+    analytics: Boolean(consent.analytics),
+    marketing: Boolean(consent.marketing),
+    savedAt: new Date().toISOString()
+  }));
+  if (cookieBanner) cookieBanner.classList.remove('show');
+}
+
+function loadCookieConsent() {
+  try {
+    return JSON.parse(localStorage.getItem(consentKey));
+  } catch (error) {
+    return null;
+  }
+}
+
+if (cookieBanner && !loadCookieConsent()) {
+  window.setTimeout(() => cookieBanner.classList.add('show'), 700);
+}
+
+if (cookieAccept) {
+  cookieAccept.addEventListener('click', () => saveCookieConsent({ analytics: true, marketing: true }));
+}
+
+if (cookieReject) {
+  cookieReject.addEventListener('click', () => saveCookieConsent({ analytics: false, marketing: false }));
+}
+
+if (cookieSettings && cookieSettingsPanel) {
+  cookieSettings.addEventListener('click', () => {
+    cookieSettingsPanel.classList.toggle('show');
+  });
+}
+
+if (cookieSave) {
+  cookieSave.addEventListener('click', () => {
+    saveCookieConsent({
+      analytics: cookieAnalytics ? cookieAnalytics.checked : false,
+      marketing: cookieMarketing ? cookieMarketing.checked : false
+    });
+  });
+}
